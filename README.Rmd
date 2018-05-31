@@ -1,5 +1,5 @@
 ---
-title: "GLASSOO"
+title: "CVglasso"
 output: github_document
   
 ---
@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-See [manual](https://github.com/MGallow/GLASSO/blob/master/GLASSOO.pdf).
+See [manual](https://github.com/MGallow/CVglasso/blob/master/CVglasso.pdf).
 
 ## Overview
 
@@ -22,27 +22,30 @@ See [manual](https://github.com/MGallow/GLASSO/blob/master/GLASSOO.pdf).
 <br>\vspace{0.5cm}
 
 
-`GLASSO` is an R package that estimates a penalized precision matrix via block-wise coordinate descent -- also known as the graphical lasso (glasso) algorithm. A (possibly incomplete) list of functions contained in the package can be found below:
+`CVglasso` is an R package that estimates a penalized precision matrix via block-wise coordinate descent -- also known as the graphical lasso (glasso) algorithm. This package is a simple wrapper around the popular 'glasso' package and extends and enhances its capabilities. These enhancements include built-in cross validation and visualizations. A (possibly incomplete) list of functions contained in the package can be found below:
 
-* `GLASSO()` computes the estimated precision matrix
+* `CVglasso()` computes the estimated precision matrix
 
-* `plot.GLASSO()` produces a heat map or line graph for cross validation errors
+* `plot.CVglasso()` produces a heat map or line graph for cross validation errors
 
 
 ## Installation
 
 ```{r, eval = FALSE}
-# The easiest way to install is from GitHub:
+# The easiest way to install is from CRAN
+install.packages("CVglasso")
+
+# You can also install the development version from GitHub:
 # install.packages("devtools")
-devtools::install_github("MGallow/GLASSOO")
+devtools::install_github("MGallow/CVglasso")
 ```
 
-If there are any issues/bugs, please let me know: [github](https://github.com/MGallow/GLASSOO/issues). You can also contact me via my [website](http://users.stat.umn.edu/~gall0441/). Pull requests are welcome!
+If there are any issues/bugs, please let me know: [github](https://github.com/MGallow/CVglasso/issues). You can also contact me via my [website](http://users.stat.umn.edu/~gall0441/). Pull requests are welcome!
 
 ## Usage
 
 ```{r, message = FALSE}
-library(GLASSOO)
+library(CVglasso)
 
 # generate data from a sparse matrix
 # first compute covariance matrix
@@ -69,16 +72,16 @@ Sample = (nrow(X) - 1)/nrow(X)*cov(X)
 (qr.solve(cov(X)) %>% round(5))
 
 # GLASSO (lam = 0.5)
-GLASSO(S = Sample, lam = 0.5)
+CVglasso(S = Sample, lam = 0.5)
 
 # GLASSO cross validation
-GLASSO(X, lam = 10^seq(-5, 5, 0.5))
+CVglasso(X, trace = "none")
 
 # produce CV heat map for GLASSO
-GLASSO = GLASSO(X, lam = 10^seq(-5, 5, 0.01))
-GLASSO %>% plot
+CVGLASSO = CVglasso(X, trace = "none")
+CVGLASSO %>% plot
 
 # produce line graph for CV errors for GLASSO
-GLASSO %>% plot(type = "line")
+CVGLASSO %>% plot(type = "heatmap")
 
 ```

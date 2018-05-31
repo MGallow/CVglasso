@@ -6,9 +6,9 @@
 \usage{
 CVglasso(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
   lam = NULL, diagonal = FALSE, path = FALSE, tol = 1e-04,
-  tol.in = 1e-04, maxit = 10000, adjmaxit = NULL, K = 5,
-  crit.cv = c("loglik", "AIC", "BIC"), start = c("warm", "cold"),
-  cores = 1, trace = c("progress", "print", "none"), ...)
+  maxit = 10000, adjmaxit = NULL, K = 5, crit.cv = c("loglik", "AIC",
+  "BIC"), start = c("warm", "cold"), cores = 1, trace = c("progress",
+  "print", "none"), ...)
 }
 \arguments{
 \item{X}{option to provide a nxp data matrix. Each row corresponds to a single observation and each column contains n observations of a single feature/variable.}
@@ -44,7 +44,7 @@ CVglasso(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
 \item{...}{additional arguments to pass to \code{glasso}.}
 }
 \value{
-returns class object \code{ADMMsigma} which includes:
+returns class object \code{CVglasso} which includes:
 \item{Call}{function call.}
 \item{Iterations}{number of iterations}
 \item{Tuning}{optimal tuning parameters (lam and alpha).}
@@ -110,7 +110,7 @@ CVglasso(X)
 }
 }
 \seealso{
-\code{\link{plot.GLASSO}}
+\code{\link{plot.CVglasso}}
 }
 \author{
 Matt Galloway \email{gall0441@umn.edu}

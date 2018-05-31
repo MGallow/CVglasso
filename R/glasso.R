@@ -37,7 +37,7 @@
 #' @param trace option to display progress of CV. Choose one of \code{progress} to print a progress bar, \code{print} to print completed tuning parameters, or \code{none}.
 #' @param ... additional arguments to pass to \code{glasso}.
 #' 
-#' @return returns class object \code{ADMMsigma} which includes:
+#' @return returns class object \code{CVglasso} which includes:
 #' \item{Call}{function call.}
 #' \item{Iterations}{number of iterations}
 #' \item{Tuning}{optimal tuning parameters (lam and alpha).}
@@ -65,7 +65,7 @@
 #' 
 #' @author Matt Galloway \email{gall0441@@umn.edu}
 #' 
-#' @seealso \code{\link{plot.GLASSO}}
+#' @seealso \code{\link{plot.CVglasso}}
 #' 
 #' @export
 #' 
@@ -91,10 +91,10 @@
 
 # we define the CVglasso precision matrix estimation function
 CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01, 
-    lam = NULL, diagonal = FALSE, path = FALSE, tol = 1e-04, tol.in = 1e-04, 
-    maxit = 10000, adjmaxit = NULL, K = 5, crit.cv = c("loglik", 
-        "AIC", "BIC"), start = c("warm", "cold"), cores = 1, trace = c("progress", 
-        "print", "none"), ...) {
+    lam = NULL, diagonal = FALSE, path = FALSE, tol = 1e-04, maxit = 10000, 
+    adjmaxit = NULL, K = 5, crit.cv = c("loglik", "AIC", "BIC"), 
+    start = c("warm", "cold"), cores = 1, trace = c("progress", "print", 
+        "none"), ...) {
     
     # checks
     if (is.null(X) && is.null(S)) {
