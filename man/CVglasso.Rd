@@ -94,7 +94,7 @@ S.sqrt = S.sqrt \%*\% t(out$vectors)
 X = Z \%*\% S.sqrt
 
 # lasso penalty CV
-CVglasso(X)
+CVglasso(X, trace = 'none')
 }
 \references{
 \itemize{

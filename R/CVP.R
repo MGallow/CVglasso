@@ -28,8 +28,8 @@
 # we define the CVP function
 CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE, 
     tol = 1e-04, maxit = 10000, adjmaxit = NULL, K = 5, crit.cv = c("loglik", 
-        "AIC", "BIC"), start = c("warm", "cold"), cores = 1, trace = c("progress", 
-        "print", "none"), ...) {
+        "AIC", "BIC"), start = c("warm", "cold"), cores = 1, 
+    trace = c("progress", "print", "none"), ...) {
     
     # match values
     crit.cv = match.arg(crit.cv)
@@ -40,7 +40,8 @@ CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
     # make cluster and register cluster
     num_cores = detectCores()
     if (cores > num_cores) {
-        cat("\nOnly detected", paste(num_cores, "cores...", sep = " "))
+        cat("\nOnly detected", paste(num_cores, "cores...", 
+            sep = " "))
     }
     if (cores > K) {
         cat("\nNumber of cores exceeds K... setting cores = K")
@@ -59,11 +60,13 @@ CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
         
         # set progress bar
         if (trace == "progress") {
-            progress = txtProgressBar(max = length(lam), style = 3)
+            progress = txtProgressBar(max = length(lam), 
+                style = 3)
         }
         
         # training set
-        leave.out = ind[(1 + floor((k - 1) * n/K)):floor(k * n/K)]
+        leave.out = ind[(1 + floor((k - 1) * n/K)):floor(k * 
+            n/K)]
         X.train = X[-leave.out, , drop = FALSE]
         X_bar = apply(X.train, 2, mean)
         X.train = scale(X.train, center = X_bar, scale = FALSE)
@@ -104,10 +107,12 @@ CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
                 diag(init) = diag(S.train) + lam_
             }
             
-            # compute the penalized likelihood precision matrix estimator
-            GLASSO = glasso(s = S.train, rho = lam_, thr = tol, maxit = maxit, 
-                penalize.diagonal = diagonal, start = "warm", w.init = init, 
-                wi.init = initOmega, trace = FALSE, ...)
+            # compute the penalized likelihood precision matrix
+            # estimator
+            GLASSO = glasso(s = S.train, rho = lam_, thr = tol, 
+                maxit = maxit, penalize.diagonal = diagonal, 
+                start = "warm", w.init = init, wi.init = initOmega, 
+                trace = FALSE, ...)
             
             if (start == "warm") {
                 
@@ -118,18 +123,19 @@ CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
                 
             }
             
-            # compute the observed negative validation loglikelihood (close
-            # enoug)
-            CV_error[i] = (nrow(X)/2) * (sum(GLASSO$wi * S.valid) - 
-                determinant(GLASSO$wi, logarithm = TRUE)$modulus[1])
+            # compute the observed negative validation loglikelihood
+            # (close enoug)
+            CV_error[i] = (nrow(X)/2) * (sum(GLASSO$wi * 
+                S.valid) - determinant(GLASSO$wi, logarithm = TRUE)$modulus[1])
             
             # update for crit.cv, if necessary
             if (crit.cv == "AIC") {
-                CV_error[i] = CV_error[i] + sum(GLASSO$wi != 0)
+                CV_error[i] = CV_error[i] + sum(GLASSO$wi != 
+                  0)
             }
             if (crit.cv == "BIC") {
-                CV_error[i] = CV_error[i] + sum(GLASSO$wi != 0) * 
-                  log(nrow(X))/2
+                CV_error[i] = CV_error[i] + sum(GLASSO$wi != 
+                  0) * log(nrow(X))/2
             }
             
             # update progress bar

@@ -28,10 +28,11 @@
 #' @keywords internal
 
 # we define the CV function
-CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE, 
-    path = FALSE, tol = 1e-04, maxit = 10000, adjmaxit = NULL, K = 5, 
-    crit.cv = c("loglik", "AIC", "BIC"), start = c("warm", "cold"), 
-    cores = 1, trace = c("progress", "print", "none"), ...) {
+CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), 
+    diagonal = FALSE, path = FALSE, tol = 1e-04, maxit = 10000, 
+    adjmaxit = NULL, K = 5, crit.cv = c("loglik", "AIC", 
+        "BIC"), start = c("warm", "cold"), cores = 1, trace = c("progress", 
+        "print", "none"), ...) {
     
     # match values
     crit.cv = match.arg(crit.cv)
@@ -47,7 +48,8 @@ CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
     
     # set progress bar
     if (trace == "progress") {
-        progress = txtProgressBar(max = K * length(lam), style = 3)
+        progress = txtProgressBar(max = K * length(lam), 
+            style = 3)
     }
     
     # no need to create folds if K = 1
@@ -120,10 +122,12 @@ CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
                 diag(init) = diag(S.train) + lam_
             }
             
-            # compute the penalized likelihood precision matrix estimator
-            GLASSO = glasso(s = S.train, rho = lam_, thr = tol, maxit = maxit, 
-                penalize.diagonal = diagonal, start = "warm", w.init = init, 
-                wi.init = initOmega, trace = FALSE, ...)
+            # compute the penalized likelihood precision matrix
+            # estimator
+            GLASSO = glasso(s = S.train, rho = lam_, thr = tol, 
+                maxit = maxit, penalize.diagonal = diagonal, 
+                start = "warm", w.init = init, wi.init = initOmega, 
+                trace = FALSE, ...)
             
             if (start == "warm") {
                 
@@ -134,10 +138,10 @@ CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
                 
             }
             
-            # compute the observed negative validation loglikelihood (close
-            # enoug)
-            CV_errors[i, k] = (nrow(X)/2) * (sum(GLASSO$wi * S.valid) - 
-                determinant(GLASSO$wi, logarithm = TRUE)$modulus[1])
+            # compute the observed negative validation loglikelihood
+            # (close enoug)
+            CV_errors[i, k] = (nrow(X)/2) * (sum(GLASSO$wi * 
+                S.valid) - determinant(GLASSO$wi, logarithm = TRUE)$modulus[1])
             
             # update for crit.cv, if necessary
             if (crit.cv == "AIC") {
@@ -156,7 +160,8 @@ CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
             
             # update progress bar
             if (trace == "progress") {
-                setTxtProgressBar(progress, i + (k - 1) * length(lam))
+                setTxtProgressBar(progress, i + (k - 1) * 
+                  length(lam))
                 
                 # if not quiet, then print progress lambda
             } else if (trace == "print") {
@@ -177,8 +182,8 @@ CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
     
     
     # return best lam and alpha values
-    return(list(lam = best_lam, path = Path, min.error = error, avg.error = AVG, 
-        cv.error = CV_errors))
+    return(list(lam = best_lam, path = Path, min.error = error, 
+        avg.error = AVG, cv.error = CV_errors))
     
 }
 

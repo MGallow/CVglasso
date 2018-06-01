@@ -37,8 +37,8 @@ S.sqrt = S.sqrt \%*\% t(out$vectors)
 X = Z \%*\% S.sqrt
 
 # produce line graph for CVglasso
-plot(CVglasso(X))
+plot(CVglasso(X, trace = 'none'))
 
 # produce CV heat map for CVglasso
-plot(CVglasso(X), type = 'heatmap')
+plot(CVglasso(X, trace = 'none'), type = 'heatmap')
 }

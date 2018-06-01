@@ -87,14 +87,15 @@
 #' X = Z %*% S.sqrt
 #'
 #' # lasso penalty CV
-#' CVglasso(X)
+#' CVglasso(X, trace = 'none')
 
-# we define the CVglasso precision matrix estimation function
+# we define the CVglasso precision matrix estimation
+# function
 CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01, 
-    lam = NULL, diagonal = FALSE, path = FALSE, tol = 1e-04, maxit = 10000, 
-    adjmaxit = NULL, K = 5, crit.cv = c("loglik", "AIC", "BIC"), 
-    start = c("warm", "cold"), cores = 1, trace = c("progress", "print", 
-        "none"), ...) {
+    lam = NULL, diagonal = FALSE, path = FALSE, tol = 1e-04, 
+    maxit = 10000, adjmaxit = NULL, K = 5, crit.cv = c("loglik", 
+        "AIC", "BIC"), start = c("warm", "cold"), cores = 1, 
+    trace = c("progress", "print", "none"), ...) {
     
     # checks
     if (is.null(X) && is.null(S)) {
@@ -106,8 +107,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
     if (!(all(c(tol, maxit, adjmaxit, K, cores) > 0))) {
         stop("Entry must be positive!")
     }
-    if (!(all(sapply(c(tol, maxit, adjmaxit, K, cores, nlam, lam.min.ratio), 
-        length) <= 1))) {
+    if (!(all(sapply(c(tol, maxit, adjmaxit, K, cores, nlam, 
+        lam.min.ratio), length) <= 1))) {
         stop("Entry must be single value!")
     }
     if (all(c(maxit, adjmaxit, K, cores)%%1 != 0)) {
@@ -177,9 +178,10 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         if (cores > 1) {
             
             # execute CVP
-            GLASSO = CVP(X = X, lam = lam, diagonal = diagonal, tol = tol, 
-                maxit = maxit, adjmaxit = adjmaxit, K = K, crit.cv = crit.cv, 
-                start = start, cores = cores, trace = trace, ...)
+            GLASSO = CVP(X = X, lam = lam, diagonal = diagonal, 
+                tol = tol, maxit = maxit, adjmaxit = adjmaxit, 
+                K = K, crit.cv = crit.cv, start = start, 
+                cores = cores, trace = trace, ...)
             MIN.error = GLASSO$min.error
             AVG.error = GLASSO$avg.error
             CV.error = GLASSO$cv.error
@@ -192,8 +194,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
             }
             GLASSO = CV(X = X, S = S, lam = lam, diagonal = diagonal, 
                 path = path, tol = tol, maxit = maxit, adjmaxit = adjmaxit, 
-                K = K, crit.cv = crit.cv, start = start, trace = trace, 
-                ...)
+                K = K, crit.cv = crit.cv, start = start, 
+                trace = trace, ...)
             MIN.error = GLASSO$min.error
             AVG.error = GLASSO$avg.error
             CV.error = GLASSO$cv.error
@@ -202,15 +204,16 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         }
         
         # print warning if lam on boundary
-        if ((GLASSO$lam == lam[1]) && (length(lam) != 1) && !path) {
+        if ((GLASSO$lam == lam[1]) && (length(lam) != 1) && 
+            !path) {
             cat("\nOptimal tuning parameter on boundary... consider providing a smaller lam value or decreasing lam.min.ratio!")
         }
         
         # specify initial estimate for Sigma
         if (diagonal) {
             
-            # simply force init to be positive definite final diagonal
-            # elements will be increased by lam
+            # simply force init to be positive definite final
+            # diagonal elements will be increased by lam
             init = S + GLASSO$lam
             
         } else {
@@ -225,8 +228,9 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         # compute final estimate at best tuning parameters
         lam_ = GLASSO$lam
         GLASSO = glasso(s = S, rho = lam_, thr = tol, maxit = maxit, 
-            penalize.diagonal = diagonal, start = "warm", w.init = init, 
-            wi.init = diag(ncol(S)), trace = FALSE, ...)
+            penalize.diagonal = diagonal, start = "warm", 
+            w.init = init, wi.init = diag(ncol(S)), trace = FALSE, 
+            ...)
         GLASSO$lam = lam_
         
         
@@ -240,8 +244,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         # specify initial estimate for Sigma
         if (diagonal) {
             
-            # simply force init to be positive definite final diagonal
-            # elements will be increased by lam
+            # simply force init to be positive definite final
+            # diagonal elements will be increased by lam
             init = S + lam
             
         } else {
@@ -254,8 +258,9 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         }
         
         GLASSO = glasso(s = S, rho = lam, thr = tol, maxit = maxit, 
-            penalize.diagonal = diagonal, start = "warm", w.init = init, 
-            wi.init = diag(ncol(S)), trace = FALSE, ...)
+            penalize.diagonal = diagonal, start = "warm", 
+            w.init = init, wi.init = diag(ncol(S)), trace = FALSE, 
+            ...)
         GLASSO$lam = lam
         
     }
@@ -270,7 +275,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
     
     # compute penalized loglik
     loglik = (-n/2) * (sum(GLASSO$wi * S) - determinant(GLASSO$wi, 
-        logarithm = TRUE)$modulus[1] + GLASSO$lam * sum(abs(C * GLASSO$wi)))
+        logarithm = TRUE)$modulus[1] + GLASSO$lam * sum(abs(C * 
+        GLASSO$wi)))
     
     
     # return values
@@ -280,10 +286,10 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         Path = NULL
     }
     
-    returns = list(Call = call, Iterations = GLASSO$niter, Tuning = tuning, 
-        Lambdas = lam, maxit = maxit, Omega = GLASSO$wi, Sigma = GLASSO$w, 
-        Path = Path, Loglik = loglik, MIN.error = MIN.error, AVG.error = AVG.error, 
-        CV.error = CV.error)
+    returns = list(Call = call, Iterations = GLASSO$niter, 
+        Tuning = tuning, Lambdas = lam, maxit = maxit, Omega = GLASSO$wi, 
+        Sigma = GLASSO$w, Path = Path, Loglik = loglik, MIN.error = MIN.error, 
+        AVG.error = AVG.error, CV.error = CV.error)
     
     class(returns) = "CVglasso"
     return(returns)
@@ -313,8 +319,8 @@ print.CVglasso = function(x, ...) {
     }
     
     # print call
-    cat("\n\nCall: ", paste(deparse(x$Call), sep = "\n", collapse = "\n"), 
-        "\n", sep = "")
+    cat("\n\nCall: ", paste(deparse(x$Call), sep = "\n", 
+        collapse = "\n"), "\n", sep = "")
     
     # print iterations
     cat("\nIterations:\n")
@@ -370,13 +376,13 @@ print.CVglasso = function(x, ...) {
 #' X = Z %*% S.sqrt
 #' 
 #' # produce line graph for CVglasso
-#' plot(CVglasso(X))
+#' plot(CVglasso(X, trace = 'none'))
 #' 
 #' # produce CV heat map for CVglasso
-#' plot(CVglasso(X), type = 'heatmap')
+#' plot(CVglasso(X, trace = 'none'), type = 'heatmap')
 
-plot.CVglasso = function(x, type = c("line", "heatmap"), footnote = TRUE, 
-    ...) {
+plot.CVglasso = function(x, type = c("line", "heatmap"), 
+    footnote = TRUE, ...) {
     
     # check
     type = match.arg(type)
@@ -388,20 +394,23 @@ plot.CVglasso = function(x, type = c("line", "heatmap"), footnote = TRUE,
     if (type == "line") {
         
         # gather values to plot
-        cv = cbind(expand.grid(lam = x$Lambdas, alpha = 0), Errors = as.data.frame.table(x$CV.error)$Freq)
+        cv = cbind(expand.grid(lam = x$Lambdas, alpha = 0), 
+            Errors = as.data.frame.table(x$CV.error)$Freq)
         
         # produce line graph
         graph = ggplot(summarise(group_by(cv, lam), Means = mean(Errors)), 
-            aes(log10(lam), Means)) + geom_jitter(width = 0.2, color = "navy blue") + 
-            theme_minimal() + geom_line(color = "red") + labs(title = "Cross-Validation Errors", 
-            y = "Error") + geom_vline(xintercept = x$Tuning[1], linetype = "dotted")
+            aes(log10(lam), Means)) + geom_jitter(width = 0.2, 
+            color = "navy blue") + theme_minimal() + geom_line(color = "red") + 
+            labs(title = "Cross-Validation Errors", y = "Error") + 
+            geom_vline(xintercept = x$Tuning[1], linetype = "dotted")
         
     } else {
         
         # augment values for heat map (helps visually)
         lam = x$Lambdas
         cv = expand.grid(lam = lam, alpha = 0)
-        Errors = 1/(c(x$AVG.error) + abs(min(x$AVG.error)) + 1)
+        Errors = 1/(c(x$AVG.error) + abs(min(x$AVG.error)) + 
+            1)
         cv = cbind(cv, Errors)
         
         # design color palette
