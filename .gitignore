@@ -21,3 +21,4 @@ docs/CVglasso_cache/latex/*.Rdata
 docs/CVglasso_cache/markdown_github/*.rdb
 docs/CVglasso_cache/markdown_github/*.rdx
 docs/CVglasso_cache/markdown_github/*.Rdata
+inst/doc

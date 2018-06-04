@@ -6,8 +6,8 @@ navbar:
   left:
     - icon: fa-home
       href: index.html
-    - text: "Details"
-      href: articles/Vignette.html
+    - text: "Tutorial"
+      href: articles/Tutorial.html
     - text: "Functions"
       href: "reference/index.html"
     - text: Related Packages

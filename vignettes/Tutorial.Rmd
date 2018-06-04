@@ -1,12 +1,19 @@
 ---
-title: "CVglasso"
-output: github_document
-  
+title: "Tutorial"
+#author: "Matt Galloway"
+#date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(magrittr)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 ## Overview
@@ -47,7 +54,8 @@ for (i in 1:5){
 }
 
 # print oracle precision matrix (shrinkage might be useful)
-(Omega = qr.solve(S) %>% round(3))
+Omega = qr.solve(S)
+round(Omega, 3)
 
 # generate 1000 x 5 matrix with rows drawn from iid N_p(0, S)
 Z = matrix(rnorm(100*5), nrow = 100, ncol = 5)
@@ -59,7 +67,7 @@ X = Z %*% S.sqrt
 Sample = (nrow(X) - 1)/nrow(X)*cov(X)
 
 # print sample precision matrix (perhaps a bad estimate)
-(qr.solve(cov(X)) %>% round(5))
+round(qr.solve(cov(X)), 5)
 
 # GLASSO (lam = 0.5)
 CVglasso(S = Sample, lam = 0.5)
@@ -69,9 +77,9 @@ CVglasso(X, trace = "none")
 
 # produce CV heat map for GLASSO
 CVGLASSO = CVglasso(X, trace = "none")
-CVGLASSO %>% plot
+plot(CVGLASSO)
 
 # produce line graph for CV errors for GLASSO
-CVGLASSO %>% plot(type = "heatmap")
+plot(CVGLASSO, type = "heatmap")
 
 ```
