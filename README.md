@@ -18,9 +18,7 @@ found below:
   - `plot.CVglasso()` produces a heat map or line graph for cross
     validation errors
 
-See
-[tutorial](https://mgallow.github.io/CVglasso/docs/articles/Tutorial.html)
-or
+See [vignette](https://mgallow.github.io/CVglasso/) or
 [manual](https://github.com/MGallow/CVglasso/blob/master/CVglasso.pdf).
 
 ## Installation
