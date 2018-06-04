@@ -30,8 +30,8 @@
 # we define the CV function
 CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2), 
     diagonal = FALSE, path = FALSE, tol = 1e-04, maxit = 10000, 
-    adjmaxit = NULL, K = 5, crit.cv = c("loglik", "AIC", 
-        "BIC"), start = c("warm", "cold"), cores = 1, trace = c("progress", 
+    adjmaxit = NULL, K = 5, crit.cv = c("loglik", "AIC", "BIC"), 
+    start = c("warm", "cold"), cores = 1, trace = c("progress", 
         "print", "none"), ...) {
     
     # match values
@@ -48,8 +48,7 @@ CV = function(X = NULL, S = NULL, lam = 10^seq(-2, 2, 0.2),
     
     # set progress bar
     if (trace == "progress") {
-        progress = txtProgressBar(max = K * length(lam), 
-            style = 3)
+        progress = txtProgressBar(max = K * length(lam), style = 3)
     }
     
     # no need to create folds if K = 1

@@ -6,10 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tutorial • CVglasso</title>
-<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Tutorial">
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Tutorial">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -37,7 +38,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -68,9 +69,22 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/MGallow/CVglasso/">
-    <span class="fa fa-github"></span>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o fa-lg"></span>
      
+  </a>
+</li>
+<li>
+  <a href="https://github.com/MGallow/CVglasso/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mgallow.github.io/">
+    <span class="fa fa-user fa-lg"></span>
+     
+    MGallow
   </a>
 </li>
       </ul>
@@ -103,114 +117,109 @@
 <li><p><code><a href="../reference/CVglasso.html">CVglasso()</a></code> computes the estimated precision matrix</p></li>
 <li><p><code><a href="../reference/plot.CVglasso.html">plot.CVglasso()</a></code> produces a heat map or line graph for cross validation errors</p></li>
 </ul>
-<p>See <a href="https://mgallow.github.io/CVglasso/">vignette</a> or <a href="https://github.com/MGallow/CVglasso/blob/master/CVglasso.pdf">manual</a>.</p>
+<p>See <a href="https://mgallow.github.io/CVglasso/docs/articles/Tutorial.html">tutorial</a> or <a href="https://github.com/MGallow/CVglasso/blob/master/CVglasso.pdf">manual</a>.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># The easiest way to install is from CRAN</span>
-<span class="kw">install.packages</span>(<span class="st">"CVglasso"</span>)
-
-<span class="co"># You can also install the development version from GitHub:</span>
-<span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"MGallow/CVglasso"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># The easiest way to install is from CRAN</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">"CVglasso"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># You can also install the development version from GitHub:</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"MGallow/CVglasso"</span>)</a></code></pre></div>
 <p>If there are any issues/bugs, please let me know: <a href="https://github.com/MGallow/CVglasso/issues">github</a>. You can also contact me via my <a href="http://users.stat.umn.edu/~gall0441/">website</a>. Pull requests are welcome!</p>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(CVglasso)
-
-<span class="co"># generate data from a sparse matrix</span>
-<span class="co"># first compute covariance matrix</span>
-S =<span class="st"> </span><span class="kw">matrix</span>(<span class="fl">0.7</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){
-  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){
-    S[i, j] =<span class="st"> </span>S[i, j]<span class="op">^</span><span class="kw">abs</span>(i <span class="op">-</span><span class="st"> </span>j)
-  }
-}
-
-<span class="co"># print oracle precision matrix (shrinkage might be useful)</span>
-Omega =<span class="st"> </span><span class="kw">qr.solve</span>(S)
-<span class="kw">round</span>(Omega, <span class="dv">3</span>)
-<span class="co">#&gt;        [,1]   [,2]   [,3]   [,4]   [,5]</span>
-<span class="co">#&gt; [1,]  1.961 -1.373  0.000  0.000  0.000</span>
-<span class="co">#&gt; [2,] -1.373  2.922 -1.373  0.000  0.000</span>
-<span class="co">#&gt; [3,]  0.000 -1.373  2.922 -1.373  0.000</span>
-<span class="co">#&gt; [4,]  0.000  0.000 -1.373  2.922 -1.373</span>
-<span class="co">#&gt; [5,]  0.000  0.000  0.000 -1.373  1.961</span>
-
-<span class="co"># generate 1000 x 5 matrix with rows drawn from iid N_p(0, S)</span>
-Z =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span><span class="op">*</span><span class="dv">5</span>), <span class="dt">nrow =</span> <span class="dv">100</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)
-out =<span class="st"> </span><span class="kw">eigen</span>(S, <span class="dt">symmetric =</span> <span class="ot">TRUE</span>)
-S.sqrt =<span class="st"> </span>out<span class="op">$</span>vectors <span class="op">%*%</span><span class="st"> </span><span class="kw">diag</span>(out<span class="op">$</span>values<span class="op">^</span><span class="fl">0.5</span>) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(out<span class="op">$</span>vectors)
-X =<span class="st"> </span>Z <span class="op">%*%</span><span class="st"> </span>S.sqrt
-
-<span class="co"># calculate sample covariance</span>
-Sample =<span class="st"> </span>(<span class="kw">nrow</span>(X) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="kw">nrow</span>(X)<span class="op">*</span><span class="kw">cov</span>(X)
-
-<span class="co"># print sample precision matrix (perhaps a bad estimate)</span>
-<span class="kw">round</span>(<span class="kw">qr.solve</span>(<span class="kw">cov</span>(X)), <span class="dv">5</span>)
-<span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]</span>
-<span class="co">#&gt; [1,]  1.70009 -0.87676 -0.39764  0.24850 -0.23348</span>
-<span class="co">#&gt; [2,] -0.87676  2.62492 -1.61550 -0.07420  0.32162</span>
-<span class="co">#&gt; [3,] -0.39764 -1.61550  3.91853 -1.42093 -0.49153</span>
-<span class="co">#&gt; [4,]  0.24850 -0.07420 -1.42093  3.15361 -1.15147</span>
-<span class="co">#&gt; [5,] -0.23348  0.32162 -0.49153 -1.15147  1.85727</span>
-
-<span class="co"># GLASSO (lam = 0.5)</span>
-<span class="kw"><a href="../reference/CVglasso.html">CVglasso</a></span>(<span class="dt">S =</span> Sample, <span class="dt">lam =</span> <span class="fl">0.5</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call: CVglasso(S = Sample, lam = 0.5)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Iterations:</span>
-<span class="co">#&gt; [1] 3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Tuning parameter:</span>
-<span class="co">#&gt;       log10(lam)  lam</span>
-<span class="co">#&gt; [1,]      -0.301  0.5</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Log-likelihood: -11.02195</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Omega:</span>
-<span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]</span>
-<span class="co">#&gt; [1,]  0.99322 -0.12358  0.00000  0.00000  0.00000</span>
-<span class="co">#&gt; [2,] -0.12358  1.10299 -0.15984  0.00000  0.00000</span>
-<span class="co">#&gt; [3,]  0.00000 -0.15984  1.26167 -0.03100  0.00000</span>
-<span class="co">#&gt; [4,]  0.00000  0.00000 -0.03100  1.35707 -0.09373</span>
-<span class="co">#&gt; [5,]  0.00000  0.00000  0.00000 -0.09373  1.00213</span>
-
-<span class="co"># GLASSO cross validation</span>
-<span class="kw"><a href="../reference/CVglasso.html">CVglasso</a></span>(X, <span class="dt">trace =</span> <span class="st">"none"</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call: CVglasso(X = X, trace = "none")</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Iterations:</span>
-<span class="co">#&gt; [1] 3</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Tuning parameter:</span>
-<span class="co">#&gt;       log10(lam)    lam</span>
-<span class="co">#&gt; [1,]       -1.32  0.048</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Log-likelihood: -124.05338</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Omega:</span>
-<span class="co">#&gt;          [,1]     [,2]     [,3]     [,4]     [,5]</span>
-<span class="co">#&gt; [1,]  1.53572 -0.71697 -0.32328  0.00000 -0.05272</span>
-<span class="co">#&gt; [2,] -0.71695  2.20910 -1.15967  0.00000  0.00000</span>
-<span class="co">#&gt; [3,] -0.32332 -1.15965  3.02618 -1.04218 -0.33141</span>
-<span class="co">#&gt; [4,]  0.00000  0.00000 -1.04216  2.65366 -0.91804</span>
-<span class="co">#&gt; [5,] -0.05272  0.00000 -0.33141 -0.91804  1.63317</span>
-
-<span class="co"># produce CV heat map for GLASSO</span>
-CVGLASSO =<span class="st"> </span><span class="kw"><a href="../reference/CVglasso.html">CVglasso</a></span>(X, <span class="dt">trace =</span> <span class="st">"none"</span>)
-<span class="kw">plot</span>(CVGLASSO)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(CVglasso)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># generate data from a sparse matrix</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># first compute covariance matrix</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">S =<span class="st"> </span><span class="kw">matrix</span>(<span class="fl">0.7</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    S[i, j] =<span class="st"> </span>S[i, j]<span class="op">^</span><span class="kw">abs</span>(i <span class="op">-</span><span class="st"> </span>j)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">  }</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co"># print oracle precision matrix (shrinkage might be useful)</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">(<span class="dt">Omega =</span> <span class="kw">round</span>(<span class="kw">qr.solve</span>(S), <span class="dv">3</span>))</a></code></pre></div>
+<pre><code>##        [,1]   [,2]   [,3]   [,4]   [,5]
+## [1,]  1.961 -1.373  0.000  0.000  0.000
+## [2,] -1.373  2.922 -1.373  0.000  0.000
+## [3,]  0.000 -1.373  2.922 -1.373  0.000
+## [4,]  0.000  0.000 -1.373  2.922 -1.373
+## [5,]  0.000  0.000  0.000 -1.373  1.961</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># generate 100 x 5 matrix with rows drawn from iid N_p(0, S)</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">Z =<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span><span class="op">*</span><span class="dv">5</span>), <span class="dt">nrow =</span> <span class="dv">100</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">out =<span class="st"> </span><span class="kw">eigen</span>(S, <span class="dt">symmetric =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">S.sqrt =<span class="st"> </span>out<span class="op">$</span>vectors <span class="op">%*%</span><span class="st"> </span><span class="kw">diag</span>(out<span class="op">$</span>values<span class="op">^</span><span class="fl">0.5</span>) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(out<span class="op">$</span>vectors)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">X =<span class="st"> </span>Z <span class="op">%*%</span><span class="st"> </span>S.sqrt</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co"># calculate sample covariance</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">Sample =<span class="st"> </span>(<span class="kw">nrow</span>(X) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span><span class="kw">nrow</span>(X)<span class="op">*</span><span class="kw">cov</span>(X)</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co"># print sample precision matrix (perhaps a bad estimate)</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="kw">round</span>(<span class="kw">qr.solve</span>(<span class="kw">cov</span>(X)), <span class="dv">5</span>)</a></code></pre></div>
+<pre><code>##          [,1]     [,2]     [,3]     [,4]     [,5]
+## [1,]  2.30646 -1.53483  0.21884 -0.08521  0.24066
+## [2,] -1.53483  3.24286 -1.66346 -0.14134  0.18760
+## [3,]  0.21884 -1.66346  3.16698 -1.23906 -0.10906
+## [4,] -0.08521 -0.14134 -1.23906  2.74022 -1.35853
+## [5,]  0.24066  0.18760 -0.10906 -1.35853  2.03323</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># GLASSO (lam = 0.5)</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="../reference/CVglasso.html">CVglasso</a></span>(<span class="dt">S =</span> Sample, <span class="dt">lam =</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<pre><code>## 
+## 
+## Call: CVglasso(S = Sample, lam = 0.5)
+## 
+## Iterations:
+## [1] 3
+## 
+## Tuning parameter:
+##       log10(lam)  lam
+## [1,]      -0.301  0.5
+## 
+## Log-likelihood: -10.44936
+## 
+## Omega:
+##          [,1]     [,2]     [,3]     [,4]     [,5]
+## [1,]  1.34080 -0.00973  0.00000  0.00000  0.00000
+## [2,] -0.00973  1.19263 -0.09615  0.00000  0.00000
+## [3,]  0.00000 -0.09615  1.21895 -0.11424  0.00000
+## [4,]  0.00000  0.00000 -0.11424  1.06968 -0.13534
+## [5,]  0.00000  0.00000  0.00000 -0.13534  1.12473</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># GLASSO cross validation</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">CVGLASSO =<span class="st"> </span><span class="kw"><a href="../reference/CVglasso.html">CVglasso</a></span>(X, <span class="dt">trace =</span> <span class="st">"none"</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">CVGLASSO</a></code></pre></div>
+<pre><code>## 
+## 
+## Call: CVglasso(X = X, trace = "none")
+## 
+## Iterations:
+## [1] 3
+## 
+## Tuning parameter:
+##       log10(lam)    lam
+## [1,]      -1.544  0.029
+## 
+## Log-likelihood: -110.16675
+## 
+## Omega:
+##          [,1]     [,2]     [,3]     [,4]     [,5]
+## [1,]  2.13225 -1.24667  0.00000  0.00000  0.18710
+## [2,] -1.24669  2.75120 -1.29907 -0.07345  0.00000
+## [3,]  0.00000 -1.29915  2.81735 -1.15679 -0.00114
+## [4,]  0.00000 -0.07339 -1.15673  2.46461 -1.17086
+## [5,]  0.18707  0.00000 -0.00116 -1.17087  1.86326</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># produce line graph for CV errors for GLASSO</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">plot</span>(CVGLASSO)</a></code></pre></div>
 <p><img src="Tutorial_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="co"># produce line graph for CV errors for GLASSO</span>
-<span class="kw">plot</span>(CVGLASSO, <span class="dt">type =</span> <span class="st">"heatmap"</span>)</code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="co"># produce CV heat map for GLASSO</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">plot</span>(CVGLASSO, <span class="dt">type =</span> <span class="st">"heatmap"</span>)</a></code></pre></div>
 <p><img src="Tutorial_files/figure-html/unnamed-chunk-2-2.png" width="700"></p>
 </div>
   </div>

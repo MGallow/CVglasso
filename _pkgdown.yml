@@ -1,16 +1,30 @@
 pandoc: 1.19.2.1
 pkgdown: 1.0.0
 pkgdown_sha: ~
+
+title: CVglasso
+url: https://mgallow.github.io/CVglasso/
+template:
+  params:
+    bootswatch: flatly
+    
+reference:
+  - title: Cross validation for `glasso`
+    contents:
+    - CVglasso
+    - plot.CVglasso
+
 navbar:
+  #type: inverse
   title: "CVglasso"
   left:
-    - icon: fa-home
+    - icon: fa-home fa-lg
       href: index.html
     - text: "Tutorial"
       href: articles/Tutorial.html
     - text: "Functions"
-      href: "reference/index.html"
-    - text: Related Packages
+      href: reference/index.html
+    - text: "Related Packages"
       menu:
         - text: "OMEGA"
           href: https://mgallow.github.io/OMEGA/
@@ -19,5 +33,12 @@ navbar:
         - text: "GLASSOO"
           href: https://mgallow.github.io/GLASSOO/
   right:
-    - icon: fa-github
+    - icon: fa-newspaper-o fa-lg
+      #text: "News"
+      href: news/index.html
+    - icon: fa-github fa-lg
+      #text: "Github"
       href: https://github.com/MGallow/CVglasso/
+    - icon: fa-user fa-lg
+      text: "MGallow"
+      href: https://mgallow.github.io/
