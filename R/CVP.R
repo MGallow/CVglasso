@@ -60,7 +60,8 @@ CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
         
         # set progress bar
         if (trace == "progress") {
-            progress = txtProgressBar(max = length(lam), style = 3)
+            progress = txtProgressBar(max = length(lam), 
+                style = 3)
         }
         
         # training set
@@ -124,8 +125,8 @@ CVP = function(X = NULL, lam = 10^seq(-2, 2, 0.2), diagonal = FALSE,
             
             # compute the observed negative validation loglikelihood
             # (close enoug)
-            CV_error[i] = (nrow(X)/2) * (sum(GLASSO$wi * S.valid) - 
-                determinant(GLASSO$wi, logarithm = TRUE)$modulus[1])
+            CV_error[i] = (nrow(X)/2) * (sum(GLASSO$wi * 
+                S.valid) - determinant(GLASSO$wi, logarithm = TRUE)$modulus[1])
             
             # update for crit.cv, if necessary
             if (crit.cv == "AIC") {

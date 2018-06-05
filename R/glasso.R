@@ -181,8 +181,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
             # execute CVP
             GLASSO = CVP(X = X, lam = lam, diagonal = diagonal, 
                 tol = tol, maxit = maxit, adjmaxit = adjmaxit, 
-                K = K, crit.cv = crit.cv, start = start, cores = cores, 
-                trace = trace, ...)
+                K = K, crit.cv = crit.cv, start = start, 
+                cores = cores, trace = trace, ...)
             MIN.error = GLASSO$min.error
             AVG.error = GLASSO$avg.error
             CV.error = GLASSO$cv.error
@@ -195,8 +195,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
             }
             GLASSO = CV(X = X, S = S, lam = lam, diagonal = diagonal, 
                 path = path, tol = tol, maxit = maxit, adjmaxit = adjmaxit, 
-                K = K, crit.cv = crit.cv, start = start, trace = trace, 
-                ...)
+                K = K, crit.cv = crit.cv, start = start, 
+                trace = trace, ...)
             MIN.error = GLASSO$min.error
             AVG.error = GLASSO$avg.error
             CV.error = GLASSO$cv.error
@@ -213,8 +213,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         # specify initial estimate for Sigma
         if (diagonal) {
             
-            # simply force init to be positive definite final diagonal
-            # elements will be increased by lam
+            # simply force init to be positive definite final
+            # diagonal elements will be increased by lam
             init = S + GLASSO$lam
             
         } else {
@@ -245,8 +245,8 @@ CVglasso = function(X = NULL, S = NULL, nlam = 10, lam.min.ratio = 0.01,
         # specify initial estimate for Sigma
         if (diagonal) {
             
-            # simply force init to be positive definite final diagonal
-            # elements will be increased by lam
+            # simply force init to be positive definite final
+            # diagonal elements will be increased by lam
             init = S + lam
             
         } else {
@@ -320,8 +320,8 @@ print.CVglasso = function(x, ...) {
     }
     
     # print call
-    cat("\n\nCall: ", paste(deparse(x$Call), sep = "\n", collapse = "\n"), 
-        "\n", sep = "")
+    cat("\n\nCall: ", paste(deparse(x$Call), sep = "\n", 
+        collapse = "\n"), "\n", sep = "")
     
     # print iterations
     cat("\nIterations:\n")
@@ -383,8 +383,8 @@ print.CVglasso = function(x, ...) {
 #' # produce CV heat map for CVglasso
 #' plot(CVglasso(X, trace = 'none'), type = 'heatmap')
 
-plot.CVglasso = function(x, type = c("line", "heatmap"), footnote = TRUE, 
-    ...) {
+plot.CVglasso = function(x, type = c("line", "heatmap"), 
+    footnote = TRUE, ...) {
     
     # check
     type = match.arg(type)

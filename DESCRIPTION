@@ -22,6 +22,6 @@ Imports: stats,
     glasso
 Depends: doParallel
 Suggests: testthat,
-    knitr,
-    rmarkdown
+    rmarkdown,
+    knitr
 VignetteBuilder: knitr
