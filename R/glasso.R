@@ -80,6 +80,7 @@
 #' }
 #'
 #' # generate 100 x 5 matrix with rows drawn from iid N_p(0, S)
+#' set.seed(123)
 #' Z = matrix(rnorm(100*5), nrow = 100, ncol = 5)
 #' out = eigen(S, symmetric = TRUE)
 #' S.sqrt = out$vectors %*% diag(out$values^0.5)
@@ -315,7 +316,7 @@ print.CVglasso = function(x, ...) {
     
     # print warning if maxit reached
     if (x$maxit <= x$Iterations) {
-        print("Maximum iterations reached...!")
+        cat("\nMaximum iterations reached...!")
     }
     
     # print call

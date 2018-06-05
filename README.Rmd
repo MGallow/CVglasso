@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(magrittr)
 ```
 
+[![Build Status](https://travis-ci.org/MGallow/ADMMsigma.svg?branch=master)](https://travis-ci.org/MGallow/ADMMsigma)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CVglasso)](https://cran.r-project.org/package=CVglasso)
 
 ## Overview
@@ -32,7 +33,7 @@ install.packages("CVglasso")
 devtools::install_github("MGallow/CVglasso")
 ```
 
-If there are any issues/bugs, please let me know: [github](https://github.com/MGallow/CVglasso/issues). You can also contact me via my [website](http://users.stat.umn.edu/~gall0441/). Pull requests are welcome!
+If there are any issues/bugs, please let me know: [github](https://github.com/MGallow/CVglasso/issues). You can also contact me via my [website](https://mgallow.github.io/). Pull requests are welcome!
 
 ## Usage
 
@@ -69,8 +70,7 @@ round(qr.solve(cov(X)), 5)
 CVglasso(S = Sample, lam = 0.5)
 
 # GLASSO cross validation
-CVGLASSO = CVglasso(X, trace = "none")
-CVGLASSO
+(CVGLASSO = CVglasso(X, trace = "none"))
 
 # produce line graph for CV errors for GLASSO
 plot(CVGLASSO)

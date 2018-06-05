@@ -1,6 +1,8 @@
 CVglasso
 ================
 
+[![Build
+Status](https://travis-ci.org/MGallow/ADMMsigma.svg?branch=master)](https://travis-ci.org/MGallow/ADMMsigma)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CVglasso)](https://cran.r-project.org/package=CVglasso)
 
 ## Overview
@@ -34,8 +36,8 @@ devtools::install_github("MGallow/CVglasso")
 
 If there are any issues/bugs, please let me know:
 [github](https://github.com/MGallow/CVglasso/issues). You can also
-contact me via my [website](http://users.stat.umn.edu/~gall0441/). Pull
-requests are welcome\!
+contact me via my [website](https://mgallow.github.io/). Pull requests
+are welcome\!
 
 ## Usage
 
@@ -112,8 +114,7 @@ CVglasso(S = Sample, lam = 0.5)
 
 ``` r
 # GLASSO cross validation
-CVGLASSO = CVglasso(X, trace = "none")
-CVGLASSO
+(CVGLASSO = CVglasso(X, trace = "none"))
 ```
 
     ## 
