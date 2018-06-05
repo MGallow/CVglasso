@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(magrittr)
 ```
 
-[![Build Status](https://travis-ci.org/MGallow/ADMMsigma.svg?branch=master)](https://travis-ci.org/MGallow/ADMMsigma)
+[![Build Status](https://travis-ci.org/MGallow/CVglasso.svg?branch=master)](https://travis-ci.org/MGallow/CVglasso)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/CVglasso)](https://cran.r-project.org/package=CVglasso)
 
 ## Overview

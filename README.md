@@ -2,7 +2,7 @@ CVglasso
 ================
 
 [![Build
-Status](https://travis-ci.org/MGallow/ADMMsigma.svg?branch=master)](https://travis-ci.org/MGallow/ADMMsigma)
+Status](https://travis-ci.org/MGallow/CVglasso.svg?branch=master)](https://travis-ci.org/MGallow/CVglasso)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CVglasso)](https://cran.r-project.org/package=CVglasso)
 
 ## Overview
