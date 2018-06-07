@@ -23,6 +23,5 @@ Imports: stats,
 Depends: doParallel
 Suggests: testthat,
     rmarkdown,
-    knitr,
-    pkdown
+    knitr
 VignetteBuilder: knitr
