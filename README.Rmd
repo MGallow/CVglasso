@@ -66,16 +66,16 @@ Sample = (nrow(X) - 1)/nrow(X)*cov(X)
 round(qr.solve(cov(X)), 5)
 
 
-# GLASSO (lam = 0.5)
+# CVglasso (lam = 0.5)
 CVglasso(S = Sample, lam = 0.5)
 
-# GLASSO cross validation
+# cross validation
 (CVGLASSO = CVglasso(X, trace = "none"))
 
-# produce line graph for CV errors for GLASSO
+# produce line graph for CV errors for CVGLASSO
 plot(CVGLASSO)
 
-# produce CV heat map for GLASSO
+# produce CV heat map for CVGLASSO
 plot(CVGLASSO, type = "heatmap")
 
 ```

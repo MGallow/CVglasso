@@ -7,6 +7,7 @@ url: https://mgallow.github.io/CVglasso/
 template:
   params:
     bootswatch: flatly
+    ganalytics: UA-84680750-4
     
 reference:
   - title: Cross validation for `glasso`
@@ -26,8 +27,8 @@ navbar:
       href: reference/index.html
     - text: "Related Packages"
       menu:
-        - text: "OMEGA"
-          href: https://mgallow.github.io/OMEGA/
+        - text: "Omega"
+          href: https://mgallow.github.io/Omega/
         - text: "ADMMsigma"
           href: https://mgallow.github.io/ADMMsigma/
         - text: "GLASSOO"
