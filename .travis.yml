@@ -8,7 +8,7 @@ branches:
 
 cache: packages
 
-script:
+after_success:
   - Rscript -e "pkgdown::build_site()"
   
 deploy:
