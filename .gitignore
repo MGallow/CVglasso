@@ -13,3 +13,4 @@ src/*.dll
 CVglasso.Rproj
 inst/doc
 docs
+vignettes/Tutorial_cache
