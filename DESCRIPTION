@@ -24,6 +24,5 @@ Depends: doParallel
 Suggests: testthat,
     rmarkdown,
     knitr,
-    pkgdown,
-    tidyverse
+    pkgdown
 VignetteBuilder: knitr
