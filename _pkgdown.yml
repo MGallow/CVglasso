@@ -9,11 +9,11 @@ template:
     bootswatch: flatly
     ganalytics: UA-84680750-4
     
-reference:
-  - title: Cross validation for `glasso`
-    contents:
-    - CVglasso
-    - plot.CVglasso
+#reference:
+#  - title: Cross validation for `glasso`
+#    contents:
+#    - CVglasso
+#    - plot.CVglasso
 
 navbar:
   #type: inverse
