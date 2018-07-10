@@ -7,13 +7,15 @@ Status](https://travis-ci.org/MGallow/CVglasso.svg?branch=master)](https://travi
 
 ## Overview
 
-`CVglasso` is an R package that estimates a penalized precision matrix
-via block-wise coordinate descent – also known as the graphical lasso
-(glasso) algorithm. This package is a simple wrapper around the popular
-‘glasso’ package and extends and enhances its capabilities. These
-enhancements include built-in cross validation and visualizations. A
-(possibly incomplete) list of functions contained in the package can be
-found below:
+![](https://github.com/MGallow/CVglasso/raw/master/vignettes/images/gif.gif)
+
+`CVglasso` is an R package that estimates a lasso penalized precision
+matrix via block-wise coordinate descent – also known as the graphical
+lasso (glasso) algorithm. This package is a simple wrapper around the
+popular ‘glasso’ package and extends and enhances its capabilities.
+These enhancements include built-in cross validation and visualizations.
+A (possibly incomplete) list of functions contained in the package can
+be found below:
 
   - `CVglasso()` computes the estimated precision matrix
 
@@ -87,7 +89,7 @@ round(qr.solve(cov(X)), 5)
     ## [5,]  0.24066  0.18760 -0.10906 -1.35853  2.03323
 
 ``` r
-# GLASSO (lam = 0.5)
+# CVglasso (lam = 0.5)
 CVglasso(S = Sample, lam = 0.5)
 ```
 
@@ -113,7 +115,7 @@ CVglasso(S = Sample, lam = 0.5)
     ## [5,]  0.00000  0.00000  0.00000 -0.13534  1.12473
 
 ``` r
-# GLASSO cross validation
+# cross validation
 (CVGLASSO = CVglasso(X, trace = "none"))
 ```
 
@@ -139,14 +141,14 @@ CVglasso(S = Sample, lam = 0.5)
     ## [5,]  0.18707  0.00000 -0.00116 -1.17087  1.86326
 
 ``` r
-# produce line graph for CV errors for GLASSO
+# produce line graph for CV errors for CVGLASSO
 plot(CVGLASSO)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
-# produce CV heat map for GLASSO
+# produce CV heat map for CVGLASSO
 plot(CVGLASSO, type = "heatmap")
 ```
 
