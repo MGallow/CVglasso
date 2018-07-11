@@ -5,12 +5,6 @@ CVglasso
 Status](https://travis-ci.org/MGallow/CVglasso.svg?branch=master)](https://travis-ci.org/MGallow/CVglasso)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CVglasso)](https://cran.r-project.org/package=CVglasso)
 
-<p align="center">
-
-<img src = "https://github.com/MGallow/CVglasso/raw/master/vignettes/images/gif.gif"/>
-
-</p>
-
 ## Overview
 
 `CVglasso` is an R package that estimates a lasso-penalized precision
@@ -19,9 +13,17 @@ lasso (glasso) algorithm. This package is a simple wrapper around the
 popular
 [glasso](https://cran.r-project.org/web/packages/glasso/index.html)
 package and extends and enhances its capabilities. These enhancements
-include built-in cross validation and visualizations. A (possibly
-incomplete) list of functions contained in the package can be found
-below:
+include built-in cross validation and
+visualizations.
+
+<p align="center">
+
+<img src = "https://github.com/MGallow/CVglasso/raw/master/vignettes/images/gif.gif"/>
+
+</p>
+
+A (possibly incomplete) list of functions contained in the package can
+be found below:
 
   - `CVglasso()` computes the estimated precision matrix
 
