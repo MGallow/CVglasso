@@ -5,13 +5,13 @@ CVglasso
 Status](https://travis-ci.org/MGallow/CVglasso.svg?branch=master)](https://travis-ci.org/MGallow/CVglasso)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/CVglasso)](https://cran.r-project.org/package=CVglasso)
 
-## Overview
-
 <p align="center">
 
 <img src = "https://github.com/MGallow/CVglasso/raw/master/vignettes/images/gif.gif"/>
 
 </p>
+
+## Overview
 
 `CVglasso` is an R package that estimates a lasso-penalized precision
 matrix via block-wise coordinate descent – also known as the graphical
