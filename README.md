@@ -30,7 +30,7 @@ be found below:
   - `plot.CVglasso()` produces a heat map or line graph for cross
     validation errors
 
-See [vignette](https://mgallow.github.io/CVglasso/) or
+See package [website](https://mgallow.github.io/CVglasso/) or
 [manual](https://github.com/MGallow/CVglasso/blob/master/CVglasso.pdf).
 
 ## Installation
@@ -53,9 +53,12 @@ are welcome\!
 
 ``` r
 library(CVglasso)
+set.seed(123)
 
-# generate data from a sparse matrix
-# first compute covariance matrix
+# generate data from a sparse oracle precision matrix
+# we will try to estimate this matrix from the data
+
+# first compute the oracle covariance matrix
 S = matrix(0.7, nrow = 5, ncol = 5)
 for (i in 1:5){
   for (j in 1:5){
@@ -83,7 +86,7 @@ S.sqrt = out$vectors %*% diag(out$values^0.5) %*% t(out$vectors)
 X = Z %*% S.sqrt
 
 # calculate sample covariance
-Sample = (nrow(X) - 1)/nrow(X)*cov(X)
+sample = (nrow(X) - 1)/nrow(X)*cov(X)
 
 # print sample precision matrix (perhaps a bad estimate)
 round(qr.solve(cov(X)), 5)
@@ -98,12 +101,12 @@ round(qr.solve(cov(X)), 5)
 
 ``` r
 # CVglasso (lam = 0.5)
-CVglasso(S = Sample, lam = 0.5)
+CVglasso(S = sample, lam = 0.5)
 ```
 
     ## 
     ## 
-    ## Call: CVglasso(S = Sample, lam = 0.5)
+    ## Call: CVglasso(S = sample, lam = 0.5)
     ## 
     ## Iterations:
     ## [1] 3
@@ -124,7 +127,7 @@ CVglasso(S = Sample, lam = 0.5)
 
 ``` r
 # cross validation
-(CVGLASSO = CVglasso(X, trace = "none"))
+(CV = CVglasso(X, trace = "none"))
 ```
 
     ## 
@@ -150,14 +153,14 @@ CVglasso(S = Sample, lam = 0.5)
 
 ``` r
 # produce line graph for CV errors for CVGLASSO
-plot(CVGLASSO)
+plot(CV)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
 ``` r
 # produce CV heat map for CVGLASSO
-plot(CVGLASSO, type = "heatmap")
+plot(CV, type = "heatmap")
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->

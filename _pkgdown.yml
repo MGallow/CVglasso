@@ -8,12 +8,6 @@ template:
   params:
     bootswatch: flatly
     ganalytics: UA-84680750-4
-    
-#reference:
-#  - title: Cross validation for `glasso`
-#    contents:
-#    - CVglasso
-#    - plot.CVglasso
 
 navbar:
   #type: inverse
@@ -23,16 +17,20 @@ navbar:
       href: index.html
     - text: "Tutorial"
       href: articles/Tutorial.html
+    - text: "Benchmark"
+      href: articles/Benchmark.html
     - text: "Functions"
       href: reference/index.html
     - text: "Related Packages"
       menu:
-        - text: "Omega"
-          href: https://mgallow.github.io/Omega/
+        #- text: "Omega"
+        #  href: https://mgallow.github.io/Omega/
         - text: "ADMMsigma"
           href: https://mgallow.github.io/ADMMsigma/
         - text: "GLASSOO"
           href: https://mgallow.github.io/GLASSOO/
+        - text: "SCPME"
+          href: https://mgallow.github.io/SCPME/
   right:
     - icon: fa-newspaper-o fa-lg
       #text: "News"
