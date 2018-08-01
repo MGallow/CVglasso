@@ -40,7 +40,7 @@ Let us generate some data.
 
 <br>\vspace{0.5cm}
 ```{r, message = FALSE, echo = TRUE}
-library(ADMMsigma)
+library(CVglasso)
 
 #  generate data from a sparse matrix
 # first compute covariance matrix
